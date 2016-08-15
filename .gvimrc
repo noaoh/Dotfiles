@@ -285,7 +285,7 @@ set textwidth=79
 "set softtabstop=4
 "set shiftwidth=4
 "font size and type
-set guifont=courier_prime_code:h13
+set guifont=Courier\ Prime\ Code\ 10
 set autoindent
 set number
 
