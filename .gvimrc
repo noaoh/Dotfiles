@@ -339,6 +339,10 @@ nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>pv :PluginInstall<cr>
 nnoremap <leader>sv :source ~/.gvimrc<cr>
 
+"""Custom Ex Mode Commands"""
+"Allows you to write as super user
+command W w !sudo tee %
+
 let g:auto_save = 1
 colorscheme solarized
 
