@@ -6,14 +6,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular'
-Plugin 'rosenfeld/conque-term'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-auto-save'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'kovisoft/slimv'
-Plugin 'mtth/scratch.vim'
 Plugin 'elzr/vim-json'
 Plugin 'hylang/vim-hy'
 call vundle#end()
@@ -341,7 +339,6 @@ nnoremap <leader>sv :source ~/.gvimrc<cr>
 
 """Custom Ex Mode Commands"""
 "Allows you to write as super user
-command W w !sudo tee %
 
 let g:auto_save = 1
 colorscheme solarized
