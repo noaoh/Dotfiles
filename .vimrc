@@ -13,7 +13,7 @@ Plugin 'kovisoft/slimv'
 Plugin 'elzr/vim-json'
 call vundle#end()
 filetype plugin indent on
-
+syntax on
 
 let mapleader = ";"
 let localleader = ";;"
