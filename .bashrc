@@ -29,12 +29,6 @@ colors() { local fgc bgc vals seq0
 	done
 }
 
-[[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
-
-[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-
-[ -r /home/bobmcpersonbob/.byobu/prompt ] && . /home/bobmcpersonbob/.byobu/prompt   #byobu-prompt#
-
 if [ "$TERM" = "linux" ]; then
     _SEDCMD='s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p'
     for i in $(sed -n "$_SEDCMD" $HOME/.Xresources | awk '$1 < 16 {printf "\\e]P%X%s", $1, $2}'); do
