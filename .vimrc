@@ -3,7 +3,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'romainl/flattened'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular'
@@ -11,6 +10,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-auto-save'
 Plugin 'kovisoft/slimv'
 Plugin 'elzr/vim-json'
+Plugin 'romainl/flattened'
 call vundle#end()
 filetype plugin indent on
 syntax on

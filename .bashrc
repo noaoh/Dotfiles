@@ -38,3 +38,5 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 export PS1="\[\033[38;5;1m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]:\[$(tput sgr0)\]\[\033[38;5;28m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+cd /mnt/c/Users/Noah\ Holt
