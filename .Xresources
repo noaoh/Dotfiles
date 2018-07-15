@@ -1,0 +1,16 @@
+#include ".Xresources.d/solarized-light"
+!#include ".Xresources.d/solarized-dark"
+Xft.dpi: 120
+Xft.autohint: 8
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+URxvt.scrollBar: false
+URxvt.font: xft:Inconsolata:medium:size=10
+URxvt.boldFont: xft:Inconsolata:bold:size=10
+URxvt.italicFont: xft:Inconsolata:italic:size=10
+URxvt.boldItalicFont: xft:Inconsolata:bold:italic:size=10
+
