@@ -1,3 +1,4 @@
 xrdb -merge ~/.Xresources
 nm-applet &
 udiskie &
+sxhkd &
