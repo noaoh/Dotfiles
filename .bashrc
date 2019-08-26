@@ -53,3 +53,10 @@ export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.gem/ruby/2.5.0/bin
 export GO111MODULE=auto
 export PS1="\[\033[38;5;1m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]:\[$(tput sgr0)\]\[\033[38;5;28m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+export NVM_DIR="/home/noah/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH=$PATH:/home/noah/bin
+
+source '/home/noah/lib/azure-cli/az.completion'

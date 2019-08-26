@@ -11,7 +11,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'vimjas/vim-python-pep8-indent'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'stephpy/vim-yaml'
-Plugin 'vimwiki/vimwiki'
+Plugin 'mattboehm/vim-accordion'
+Plugin 'jakykong/vim-zim'
+Plugin 'articicestudio/nord-vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -55,3 +57,9 @@ set undofile
 let g:auto_save = 1
 let g:gruvbox_contrast_light = 'soft'
 colorscheme flattened_dark
+
+function TrimSpaces() range
+  let oldhlsearch=ShowSpaces(1)
+  execute a:firstline.",".a:lastline."substitute ///gec"
+  let &hlsearch=oldhlsearch
+endfunction

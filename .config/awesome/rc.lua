@@ -1,7 +1,7 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-local battery = require("battery")
+local battery = require("lain/widget/bat")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -43,9 +43,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/solarized-dark/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/awesome-solarized/dark/theme.lua")
 local wallpaper_path = "/home/noah/Dropbox/pictures/wallpapers/"
-beautiful.wallpaper = wallpaper_path.."wallhaven-417608.jpg"
+beautiful.wallpaper = wallpaper_path.."wallhaven-687742.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -144,7 +144,11 @@ local function client_menu_toggle_fn()
                                 end
                         }
 
-                        local quake = lain.util.quake() 
+                        local quake = lain.util.quake({ 
+                                app = "urvxt",
+                                vert = "top",
+                                sticky = true
+                        })
 
                         -- Create a wibox for each screen and add it
                         local taglist_buttons = gears.table.join(
@@ -367,8 +371,8 @@ local function client_menu_toggle_fn()
         {description = "restore minimized", group = "client"}),
 
         -- Prompt
-        -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-        --        {description = "run prompt", group = "launcher"}),
+        awful.key({ modkey },            "r",     function () os.execute("rofi -show combi") end,
+                {description = "run prompt", group = "launcher"}),
 
         awful.key({ modkey }, "x",
         function ()
@@ -426,7 +430,26 @@ local function client_menu_toggle_fn()
                 c.maximized_horizontal = not c.maximized_horizontal
                 c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+        awful.key({ modkey, "Shift" }, "n", 
+        function () 
+                lain.util.add_tag(mylayout) 
+        end),
+        awful.key({ modkey, "Shift" }, "r", 
+        function () 
+                lain.util.rename_tag() 
+        end),
+        awful.key({ modkey, "Shift" }, "Left", 
+        function () 
+                lain.util.move_tag(1) 
+        end),   -- move to next tag
+        awful.key({ modkey, "Shift" }, "Right", 
+        function () 
+                lain.util.move_tag(-1) 
+        end) -- move to previous tag
+        -- awful.key({ modkey, "Shift" }, "d", 
+        -- function () lain.util.
+        -- end)
         )
 
         -- Bind all key numbers to tags.
