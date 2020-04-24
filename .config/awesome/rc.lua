@@ -43,7 +43,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/awesome-solarized/dark/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/nord/theme.lua")
 local wallpaper_path = "/home/noah/Dropbox/pictures/wallpapers/"
 beautiful.wallpaper = wallpaper_path.."wallhaven-687742.png"
 
@@ -176,14 +176,14 @@ local function client_menu_toggle_fn()
                                         -- Without this, the following
                                         -- :isvisible() makes no sense
                                         c.minimized = false
-                                        if not c:isvisible() and c.first_tag then
+
                                                 c.first_tag:view_only()
                                         end
                                         -- This will also un-minimize
                                         -- the client, if needed
                                         client.focus = c
                                         c:raise()
-                                end
+                                
                         end),
                         awful.button({ }, 3, client_menu_toggle_fn()),
                         awful.button({ }, 4, function ()

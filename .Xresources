@@ -1,5 +1,5 @@
 !#include ".Xresources.d/solarized-light"
-#include ".Xresources.d/solarized-dark"
+#include ".Xresources.d/nord"
 Xft.dpi: 120
 Xft.autohint: 8
 Xft.lcdfilter:  lcddefault

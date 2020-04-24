@@ -14,6 +14,8 @@ Plugin 'stephpy/vim-yaml'
 Plugin 'mattboehm/vim-accordion'
 Plugin 'jakykong/vim-zim'
 Plugin 'articicestudio/nord-vim'
+Plugin 'zah/nim.vim'
+Plugin 'luochen1990/rainbow'
 call vundle#end()
 
 filetype plugin indent on
@@ -56,6 +58,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 set undofile
 let g:auto_save = 1
 let g:gruvbox_contrast_light = 'soft'
+let g:rainbow_active = 1
 colorscheme flattened_dark
 
 function TrimSpaces() range

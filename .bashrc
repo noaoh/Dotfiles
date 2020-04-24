@@ -60,3 +60,13 @@ export NVM_DIR="/home/noah/.nvm"
 export PATH=$PATH:/home/noah/bin
 
 source '/home/noah/lib/azure-cli/az.completion'
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/serverless.bash ] && . /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/sls.bash ] && . /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/sls.bash
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[ -f /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/slss.bash ] && . /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/slss.bash
