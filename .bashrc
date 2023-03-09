@@ -48,18 +48,17 @@ gopath () {
         done
 }
 
+aurlist() {
+        pacman -Qqm
+}
+
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.gem/ruby/2.5.0/bin
 export GO111MODULE=auto
 export PS1="\[\033[38;5;1m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]:\[$(tput sgr0)\]\[\033[38;5;28m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
-export NVM_DIR="/home/noah/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 export PATH=$PATH:/home/noah/bin
-
-source '/home/noah/lib/azure-cli/az.completion'
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -70,3 +69,7 @@ source '/home/noah/lib/azure-cli/az.completion'
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [ -f /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/slss.bash ] && . /home/noah/Code/github.com/noaoh/sleepytime/node_modules/tabtab/.completions/slss.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

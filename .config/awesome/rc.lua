@@ -44,8 +44,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/nord/theme.lua")
-local wallpaper_path = "/home/noah/Dropbox/pictures/wallpapers/"
-beautiful.wallpaper = wallpaper_path.."wallhaven-687742.png"
+local wallpaper_path = "/home/noaoh/Pictures/wallpapers/"
+beautiful.wallpaper = wallpaper_path.."wallhaven-98595-blue.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -64,16 +64,16 @@ awful.layout.layouts = {
         awful.layout.suit.floating,
         awful.layout.suit.tile,
         awful.layout.suit.tile.left,
-        awful.layout.suit.tile.bottom,
-        awful.layout.suit.tile.top,
-        awful.layout.suit.fair,
-        awful.layout.suit.fair.horizontal,
-        awful.layout.suit.spiral,
-        awful.layout.suit.spiral.dwindle,
+        -- awful.layout.suit.tile.bottom,
+        -- awful.layout.suit.tile.top,
+        -- awful.layout.suit.fair,
+        -- awful.layout.suit.fair.horizontal,
+        -- awful.layout.suit.spiral,
+        -- awful.layout.suit.spiral.dwindle,
         awful.layout.suit.max,
         awful.layout.suit.max.fullscreen,
         awful.layout.suit.magnifier,
-        awful.layout.suit.corner.nw,
+        -- awful.layout.suit.corner.nw,
         -- awful.layout.suit.corner.ne,
         -- awful.layout.suit.corner.sw,
         -- awful.layout.suit.corner.se,
@@ -119,9 +119,10 @@ local function client_menu_toggle_fn()
                         -- Keyboard map indicator and switcher
                         mykeyboardlayout = awful.widget.keyboardlayout()
 
+
                         -- {{{ Wibar
                         -- Create a textclock widget
-                        mytextclock = wibox.widget.textclock("%a %b %d, %I:%M %p ")
+                        local mytextclock = wibox.widget.textclock("%a %b %d, %I:%M %p ")
 
                         -- Create a battery indicator
                         local mybattery = lain.widget.bat {
@@ -215,7 +216,7 @@ local function client_menu_toggle_fn()
 
                                 -- Each screen has its own tag table.
                                 -- awful.tag({ "www", "code", "music", "office", "misc", "6", "7", "8", "9"}, s, awful.layout.layouts[1])
-                                awful.tag({ "www", "code", "music", "office", "misc" }, s, awful.layout.layouts[1])
+                                awful.tag({ "www", "code", "music", "office", "tools", "comm", "tmp" }, s, awful.layout.layouts[1])
 
                                 -- Create a promptbox for each screen
                                 s.mypromptbox = awful.widget.prompt()
@@ -268,6 +269,7 @@ local function client_menu_toggle_fn()
         ))
         -- }}}
 
+        local lockscreen_wallpaper_path = "/home/noaoh/Pictures/wallpapers/nightdesktop1.png"
         -- {{{ Key bindings
         globalkeys = gears.table.join(
         awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -279,6 +281,7 @@ local function client_menu_toggle_fn()
         awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
         {description = "go back", group = "tag"}),
         awful.key({ modkey, }, "z", function() quake:toggle() end),
+        awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("i3lock -i " .. lockscreen_wallpaper_path) end),
         awful.key({ modkey, }, "j",
         function()
                 awful.client.focus.bydirection("down")

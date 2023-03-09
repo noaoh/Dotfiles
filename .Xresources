@@ -1,5 +1,6 @@
 !#include ".Xresources.d/solarized-light"
 #include ".Xresources.d/nord"
+!#include ".Xresources.d/molokai"
 Xft.dpi: 120
 Xft.autohint: 8
 Xft.lcdfilter:  lcddefault

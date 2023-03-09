@@ -1,6 +1,33 @@
 {
-    "workbench.colorTheme": "Braver's Solarized Light (themed workbench)",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
-    "editor.multiCursorModifier": "ctrlCmd"
+    "editor.multiCursorModifier": "ctrlCmd",
+    "workbench.colorTheme": "Nord",
+    "editor.inlineSuggest.enabled": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "http.proxyAuthorization": null,
+    "editor.language.colorizedBracketPairs": [
+        ["{", "}"], ["(", ")"], ["[", "]"]
+    ],
+    "editor.bracketPairColorization.enabled": true,
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#B48EAD",
+        "editorBracketHighlight.foreground2": "#A3BE8C",
+        "editorBracketHighlight.foreground3": "#EBCB8B",
+        "editorBracketHighlight.foreground4": "#D08770",
+        "editorBracketHighlight.unexpectedBracket.foreground": "#BF616A"
+    },
+    "extensions.supportUntrustedWorkspaces": {
+    
+    },
+    "redhat.telemetry.enabled": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.renderWhitespace": "all",
+    "highlight-matching-tag.highlightSelfClosing": true,
+    "docthis.returnsTag": true
 }
