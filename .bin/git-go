@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+url=$1
+stripped_url="${url#https://}"
+IFS='/' read -rA components <<< "$stripped_url"
+website=${components[1]}
+owner=${components[2]}
+repo=${components[3]}
+
+if [[ -n "$website" && -n "$owner" && -n "$repo" ]]; then
+        git clone $url "$HOME/Code/$website/$owner/$repo" 
+else
+        echo "Invalid format"
+fi
+

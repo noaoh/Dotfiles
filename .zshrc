@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+. /opt/asdf-vm/asdf.sh
+
+
 git_prompt() {
         local branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
         if [ -n "$branch_name" ]; then
@@ -23,10 +26,11 @@ PROMPT='%F{red}%n%f@%F{red}%m%F{white}:%f%f%F{green}%B%~%b%f%\:%F{yellow}$(git_p
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.gem/ruby/2.5.0/bin
+export PATH=$PATH:~/.bin
 export GO111MODULE=auto
 export NODE_ENV='development'
+export EDITOR='vim'
 
-export PATH=$PATH:/home/noah/bin
 no_proxy=localhost
 
 
