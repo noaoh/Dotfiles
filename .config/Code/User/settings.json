@@ -29,5 +29,8 @@
     },
     "editor.renderWhitespace": "all",
     "highlight-matching-tag.highlightSelfClosing": true,
-    "docthis.returnsTag": true
+    "docthis.returnsTag": true,
+    "editor.fontFamily": "'Inconsolata Nerd Font Mono', 'monospace', monospace",
+    "editor.fontLigatures": false,
+    "editor.lineNumbers": "relative"
 }

@@ -1,5 +1,5 @@
 xrdb -merge ~/.Xresources
-nm-applet &
 udiskie &
 sxhkd &
-blueman-applet &
+picom -b
+

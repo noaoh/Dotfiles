@@ -10,10 +10,14 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 URxvt.scrollBar: false
-URxvt.font: xft:Inconsolata:medium:size=10
-URxvt.boldFont: xft:Inconsolata:bold:size=10
-URxvt.italicFont: xft:Inconsolata:italic:size=10
-URxvt.boldItalicFont: xft:Inconsolata:bold:italic:size=10
+!URxvt.font: xft:Inconsolata:medium:size=10
+!URxvt.boldFont: xft:Inconsolata:bold:size=10
+!URxvt.italicFont: xft:Inconsolata:italic:size=10
+!URxvt.boldItalicFont: xft:Inconsolata:bold:italic:size=10
+URxvt.font: xft:Inconsolata Nerd Font Mono:medium:size=12
+URxvt.boldFont: xft:Inconsolata Nerd Font Mono:bold:size=12
+URxvt.italicFont: xft:Inconsolata Nerd Font Mono:italic:size=12
+URxvt.boldItalicFont: xft:Inconsolata Nerd Font Mono:bold:italic:size=12
 URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
 URxvt.keysym.M-u:     perl:url-select:select_next
 URxvt.url-launcher:   /usr/bin/firefox
@@ -22,4 +26,4 @@ URxvt.matcher.button: 1
 URxvt.keysym.M-Escape:perl:keyboard-select:activate
 URxvt.keysym.Control-Shift-V:     perl:pasta:paste
 ! Comment this if you do not want copy when text is selected
-URxvt.clipboard.autocopy: true
+! URxvt.clipboard.autocopy: true

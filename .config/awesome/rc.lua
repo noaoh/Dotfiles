@@ -1,10 +1,10 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-local battery = require("lain/widget/bat")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
+local battery = require("lain/widget/bat")
 -- Theme handling library
 local beautiful = require("beautiful")
 local lain = require("lain")
@@ -122,7 +122,7 @@ local function client_menu_toggle_fn()
 
                         -- {{{ Wibar
                         -- Create a textclock widget
-                        local mytextclock = wibox.widget.textclock("%a %b %d, %I:%M %p ")
+                        local mytextclock = wibox.widget.textclock("%a %b %d, %H:%M ")
 
                         -- Create a battery indicator
                         local mybattery = lain.widget.bat {
@@ -146,9 +146,10 @@ local function client_menu_toggle_fn()
                         }
 
                         local quake = lain.util.quake({ 
-                                app = "urvxt",
+                                app = "urxvt",
                                 vert = "top",
-                                sticky = true
+                                sticky = true,
+                                height = 0.4,
                         })
 
                         -- Create a wibox for each screen and add it
@@ -215,8 +216,7 @@ local function client_menu_toggle_fn()
                                 set_wallpaper(s)
 
                                 -- Each screen has its own tag table.
-                                -- awful.tag({ "www", "code", "music", "office", "misc", "6", "7", "8", "9"}, s, awful.layout.layouts[1])
-                                awful.tag({ "www", "code", "music", "office", "tools", "demo", "comm", "tmp" }, s, awful.layout.layouts[1])
+                                awful.tag({ "\u{eb01}", "\u{eac4}", "\u{f001}", "\u{f151f}", "\u{f1064}", "\u{ead8}", "\u{f27a}", "\u{f0508}" }, s, awful.layout.layouts[1])
 
                                 -- Create a promptbox for each screen
                                 s.mypromptbox = awful.widget.prompt()
@@ -229,7 +229,14 @@ local function client_menu_toggle_fn()
                                 awful.button({ }, 4, function () awful.layout.inc( 1) end),
                                 awful.button({ }, 5, function () awful.layout.inc(-1) end)))
                                 -- Create a taglist widget
-                                s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+                                s.mytaglist = awful.widget.taglist {
+                                        screen = s, 
+                                        filter = awful.widget.taglist.filter.all,
+                                        buttons = taglist_buttons,
+                                        style = {
+                                                font = "Inconsolata Nerd Font Mono 24"
+                                        }
+                                }
 
                                 -- Create a tasklist widget
                                 s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
@@ -280,7 +287,7 @@ local function client_menu_toggle_fn()
         {description = "view next", group = "tag"}),
         awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
         {description = "go back", group = "tag"}),
-        awful.key({ modkey, }, "z", function() quake:toggle() end),
+        awful.key({ modkey, }, "`", function() quake:toggle() end),
         awful.key({ modkey, "Shift" }, "l", function() awful.util.spawn("i3lock -i " .. lockscreen_wallpaper_path) end),
         awful.key({ modkey, }, "j",
         function()

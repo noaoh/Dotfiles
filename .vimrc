@@ -16,7 +16,7 @@ filetype off
 "Plugin 'articicestudio/nord-vim'
 "Plugin 'zah/nim.vim'
 "Plugin 'luochen1990/rainbow'
-"call vundle#end()
+#call vundle#end()
 
 filetype plugin indent on
 syntax on
@@ -28,7 +28,7 @@ set noswapfile
 
 """Text settings"""
 set expandtab
-set textwidth=79
+set textwidth=119
 "set tabstop=8
 "set softtabstop=4
 "set shiftwidth=4

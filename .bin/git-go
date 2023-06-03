@@ -6,6 +6,7 @@ IFS='/' read -rA components <<< "$stripped_url"
 website=${components[1]}
 owner=${components[2]}
 repo=${components[3]}
+stripped_repo="${repo%\.git}"
 
 if [[ -n "$website" && -n "$owner" && -n "$repo" ]]; then
         git clone $url "$HOME/Code/$website/$owner/$repo" 
