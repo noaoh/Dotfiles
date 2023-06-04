@@ -1,0 +1,3 @@
+#!/bin/zsh
+curl -s -X GET https://buddha-api.com/api/today | jq -r '[.text, .byName] | join("\n -- ")' | cowsay -f little-buddha
+
