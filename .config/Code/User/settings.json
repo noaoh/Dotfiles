@@ -32,5 +32,11 @@
     "docthis.returnsTag": true,
     "editor.fontFamily": "'Inconsolata Nerd Font Mono', 'monospace', monospace",
     "editor.fontLigatures": false,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    }
 }

@@ -3,7 +3,7 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
-local wibox = require("wibox")
+local wibox = require("wibox") 
 local battery = require("lain/widget/bat")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -12,9 +12,11 @@ local lain = require("lain")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local newtwork_manager_widget = require("network-manager-widget.netmgr")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+local vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -45,9 +47,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/nord/theme.lua")
 local wallpaper_path = "/home/noaoh/Pictures/wallpapers/"
-beautiful.wallpaper = wallpaper_path.."wallhaven-98595-blue.png"
+beautiful.wallpaper = wallpaper_path.."wallhaven-288gj9-blue.png"
 
--- This is used later as the default terminal and editor to run.
+local currently_listening_widget = require("currently-listening-widget")
+
+
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
@@ -122,26 +126,26 @@ local function client_menu_toggle_fn()
 
                         -- {{{ Wibar
                         -- Create a textclock widget
-                        local mytextclock = wibox.widget.textclock("%a %b %d, %H:%M ")
+                        local mytextclock = wibox.widget.textclock("%a %Y-%m-%d %H:%M ")
 
                         -- Create a battery indicator
                         local mybattery = lain.widget.bat {
                                 settings = function() 
-                                        widget:set_markup("Bat: " .. bat_now.perc .. "% ")
+                                        widget:set_markup("<span foreground='#A3BE8C'>Bat: " .. bat_now.perc .. "% </span>> ")
                                 end
                         }
 
                         -- Create a CPU indicator
                         local mycpu = lain.widget.cpu {
                                 settings = function()
-                                        widget:set_markup("CPU: " .. cpu_now.usage .. "% ")
+                                        widget:set_markup("<span foreground='#BF616A'>CPU: " .. cpu_now.usage .. "% </span>> ")
                                 end
                         }
 
                         -- Create a memory indicator
                         local mymem = lain.widget.mem {
                                 settings = function()
-                                        widget:set_markup("Mem: " .. mem_now.perc .. "% ")
+                                        widget:set_markup("<span foreground='#EBCB8B'>Mem: " .. mem_now.perc .. "% </span>> ")
                                 end
                         }
 
@@ -151,6 +155,29 @@ local function client_menu_toggle_fn()
                                 sticky = true,
                                 height = 0.4,
                         })
+
+                        function mynetworkmenu()
+                                networkmenu = awful.menu({
+                                items = network_manager_widget.generate_network_menu()
+                            })
+                                return networkmenu
+                            end
+                            
+                        mynetworklauncher = awful.widget.launcher({
+                            menu = awful.menu({ 
+                                items = {{ "s" , "s" }, { "s" , "s" }}
+                            })
+                        })
+                            
+                        function updatenetworkmenu()
+                                mynetworklauncher = awful.widget.launcher({
+                                                    menu = mynetworkmenu()
+                            })
+                                return mynetworklauncher
+                        end
+    			
+                        -- updatenetworkmenu()
+                        -- vicious.register(mynetworklauncher, awful.widget.launcher, updatenetworkmenu(), 30 )
 
                         -- Create a wibox for each screen and add it
                         local taglist_buttons = gears.table.join(
@@ -216,7 +243,11 @@ local function client_menu_toggle_fn()
                                 set_wallpaper(s)
 
                                 -- Each screen has its own tag table.
-                                awful.tag({ "\u{eb01}", "\u{eac4}", "\u{f001}", "\u{f151f}", "\u{f1064}", "\u{ead8}", "\u{f27a}", "\u{f0508}" }, s, awful.layout.layouts[1])
+                                awful.tag(
+                                    { "\u{eb01}", "\u{eac4}", "\u{f001}", "\u{f151f}", "\u{f1064}", "\u{ead8}", "\u{f27a}", "\u{f0508}" },
+                                    s,
+                                    awful.layout.layouts[1]
+                                )
 
                                 -- Create a promptbox for each screen
                                 s.mypromptbox = awful.widget.prompt()
@@ -230,14 +261,47 @@ local function client_menu_toggle_fn()
                                 awful.button({ }, 5, function () awful.layout.inc(-1) end)))
                                 -- Create a taglist widget
                                 s.mytaglist = awful.widget.taglist {
-                                        screen = s, 
-                                        filter = awful.widget.taglist.filter.all,
-                                        buttons = taglist_buttons,
-                                        style = {
-                                                font = "Inconsolata Nerd Font Mono 24"
-                                        }
+                                    screen = s,
+                                    filter = awful.widget.taglist.filter.all,
+                                    style = {
+                                        shape = gears.shape.powerline,
+                                        font = "Inconsolata Nerd Font Mono 24",
+                                    },
+                                    layout = {
+                                        spacing = 18,
+                                        spacing_widget = {
+                                            color  = '#dddddd',
+                                            shape  = gears.shape.powerline,
+                                            widget = wibox.widget.separator,
+                                        },
+                                        layout  = wibox.layout.fixed.horizontal
+                                    },
+                                    widget_template = {
+                                        {
+                                            {
+                                                {
+                                                    {
+                                                        id = 'icon_role',
+                                                        widget = wibox.widget.imagebox,
+                                                    },
+                                                    margins = 0,
+                                                    widget = wibox.container.margin,
+                                                },
+                                                {
+                                                    id = 'text_role',
+                                                    widget = wibox.widget.textbox,
+                                                },
+                                                layout = wibox.layout.fixed.horizontal,
+                                                },
+                                                left  = 8,
+                                                right = 8,
+                                                widget = wibox.container.margin
+                                        },
+                                        id = 'background_role',
+                                        widget = wibox.container.background,
+                                    },
+                                    buttons = taglist_buttons
                                 }
-
                                 -- Create a tasklist widget
                                 s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
@@ -249,21 +313,24 @@ local function client_menu_toggle_fn()
                                 s.mywibox:setup {
                                         layout = wibox.layout.align.horizontal,
                                         { -- Left widgets
-                                        layout = wibox.layout.fixed.horizontal,
-                                        mylauncher,
-                                        s.mytaglist,
-                                        s.mypromptbox,
-                                },
-                                s.mytasklist, -- Middle widget
-                                { -- Right widgets
-                                layout = wibox.layout.fixed.horizontal,
-                                wibox.widget.systray(),
-                                mybattery,
-                                mycpu,
-                                mymem,
-                                mytextclock,
-                                s.mylayoutbox,
-                        },
+                                                layout = wibox.layout.fixed.horizontal,
+ --                                               mylauncher,
+                                                s.mytaglist,
+                                                s.mypromptbox,
+                                        },
+                                        {
+                                                layout = wibox.layout.flex.horizontal,
+                                                currently_listening_widget,
+                                        },
+                                        { -- Right widgets
+                                                layout = wibox.layout.fixed.horizontal,
+                                                wibox.widget.systray(),
+                                                mybattery,
+                                                mycpu,
+                                                mymem,
+                                                mytextclock,
+                                                s.mylayoutbox,
+                                        },
                 }
         end)
         -- }}}
