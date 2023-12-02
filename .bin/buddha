@@ -1,3 +1,21 @@
 #!/bin/zsh
-curl -s -X GET https://buddha-api.com/api/today | jq -r '[.text, .byName] | join("\n -- ")' | cowsay -f little-buddha
+
+new_buddha=true
+
+modified=false
+if [[ -e ~/.bin/buddha.txt ]]; then
+  modified=$(date -r ~/.bin/buddha.txt +%Y-%m-%d) 
+fi
+
+today=$(date +%Y-%m-%d)
+if [[ "$modified" -eq "$today" ]]; then
+  new_buddha=false
+fi
+
+if ($new_buddha); then
+  text=$(curl -s -X GET https://buddha-api.com/api/today | jq -r '[.text, .byName] | join(" \n - ")')
+  echo $text > ~/.bin/buddha.txt
+fi
+
+cowsay -f little-buddha < ~/.bin/buddha.txt
 

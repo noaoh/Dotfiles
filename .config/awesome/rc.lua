@@ -126,7 +126,7 @@ local function client_menu_toggle_fn()
 
                         -- {{{ Wibar
                         -- Create a textclock widget
-                        local mytextclock = wibox.widget.textclock("%a %Y-%m-%d %H:%M ")
+                        local mytextclock = wibox.widget.textclock("%a %Y-%m-%d %H:%M %Z ")
 
                         -- Create a battery indicator
                         local mybattery = lain.widget.bat {
@@ -314,9 +314,7 @@ local function client_menu_toggle_fn()
                                         layout = wibox.layout.align.horizontal,
                                         { -- Left widgets
                                                 layout = wibox.layout.fixed.horizontal,
- --                                               mylauncher,
                                                 s.mytaglist,
-                                                s.mypromptbox,
                                         },
                                         {
                                                 layout = wibox.layout.flex.horizontal,
@@ -324,7 +322,6 @@ local function client_menu_toggle_fn()
                                         },
                                         { -- Right widgets
                                                 layout = wibox.layout.fixed.horizontal,
-                                                wibox.widget.systray(),
                                                 mybattery,
                                                 mycpu,
                                                 mymem,
@@ -637,10 +634,7 @@ local function client_menu_toggle_fn()
         { rule_any = {type = { "normal", "dialog" }
 }, properties = { titlebars_enabled = false }
     },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Firefox" }, properties = { opacity = 1, maximized = false, floating = false } },
 }
 -- }}}
 
